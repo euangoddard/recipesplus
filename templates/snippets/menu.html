@@ -1,0 +1,18 @@
+<div class="well">
+    <ul class="nav nav-list">
+        {% for menu_item in menu %}
+            {% if menu_item.children %}
+                <li class="nav-header">{{ menu_item.label }}</li>
+                {% for child in menu_item.children %}
+                    {% include "snippets/menu_link.html" with menu_item=child %}
+                {% endfor %}
+                {% if not forloop.last %}
+                    <li class="divider"></li>
+                {% endif %}
+            {% else %}
+                {% include "snippets/menu_link.html" %}
+                <li class="divider"></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

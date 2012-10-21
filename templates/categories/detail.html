@@ -1,0 +1,58 @@
+{% extends "base_with_content.html" %}
+
+{% block title %}{{ category.title }} recipes{% endblock %}
+
+{% block page_heading %}{{ category.title }} recipes{% endblock %}
+
+
+{% block breadcrumb_content %}
+  <li>
+    <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+    <span class="divider">/</span>
+  </li>
+  <li>
+    <a href="{% url category_listing %}"><i class="icon-th-list"></i>
+    Categories</a> <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <i class="icon-folder-open"></i> {{ category }} recipes
+  </li>
+{% endblock breadcrumb_content %}
+
+
+{% block content %}
+  <nav class="pull-right">
+    <a class="btn" href="{% url category_updating category_slug=category.slug %}">
+      <i class="icon-pencil"></i>
+      Rename category
+    </a>
+    <a class="btn btn-danger" href="{% url category_deletion category_slug=category.slug %}">
+      <i class="icon-trash icon-white"></i>
+      Delete category
+    </a>
+  </nav>
+  {% if recipes %}
+    <ul>
+      {% for recipe in recipes %}
+        <li>
+          <a href="{{ recipe.get_absolute_url }}">{{ recipe }}</a>
+          {% include "snippets/flag_control.html" %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h3>There are currently no recipes in this category</h3>
+    <hr>
+    <a href="{% url recipe_creation %}" class="btn btn-primary">
+      Add a recipe <i class="icon-plus icon-white"></i>
+    </a>
+    <a href="{% url recipe_import %}" class="btn">
+      Import a recipe <i class="icon-download-alt"></i>
+    </a>
+  {% endif %}
+{% endblock content %}
+
+
+{% block js %}
+  <script src="{{ STATIC_URL }}js/flag_control.js"></script>
+{% endblock js %}

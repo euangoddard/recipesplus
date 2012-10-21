@@ -1,0 +1,34 @@
+{% if page_count > 1 %}
+    {% load pagination %}
+    <div class="pagination">
+        <ul>
+            {% if current_page > 1 %}
+                <li><a href="?{% make_page_query_string previous_page_number %}">&laquo;</a></li>
+            {% else %}
+                <li class="disabled"><a href="#">&laquo;</a></li>
+            {% endif %}
+            
+            {% if show_first %}
+                <li><a href="?{% make_page_query_string 1 %}">1</a></li>
+                <li class="disabled"><a href="#">&hellip;</a></li>
+            {% endif %}
+            
+            {% for page_number in page_numbers %}
+                <li{% if page_number == current_page %} class="active"{% endif %}>
+                    <a href="?{% make_page_query_string page_number %}">{{ page_number }}</a>
+                </li>
+            {% endfor %}
+            
+            {% if show_last %}
+                <li class="disabled"><a href="#">&hellip;</a></li>
+                <li><a href="?{% make_page_query_string page_count %}">{{ page_count }}</a></li>
+            {% endif %}
+            
+            {% if current_page < page_count %}
+                <li><a href="?{% make_page_query_string next_page_number %}">&raquo;</a></li>
+            {% else %}
+                <li class="disabled"><a href="#">&raquo;</a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

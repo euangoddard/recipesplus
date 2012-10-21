@@ -1,0 +1,54 @@
+{% extends "base_with_content.html" %}
+
+{% load pagination %}
+
+{% block title %}Browse Flagged Recipes{% endblock %}
+
+{% block page_heading %}Browse Flagged Recipes{% endblock %}
+
+
+{% block breadcrumb_content %}
+    <li>
+        <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li class="active">
+        <i class="icon-list-alt"></i> Recipes
+    </li>
+{% endblock breadcrumb_content %}
+
+
+{% block content %}
+    <nav class="pull-right space-below">
+        <a
+          class="btn btn-warning"
+          href="{% url flagged_recipe_clearing %}"
+          id="unflag_all_recipes"
+        >
+            <i class="icon-flag icon-white"></i>
+            Unflag all recipes
+        </a>
+    </nav>
+    {% if recipes %}
+      <ul id="flagged_recipes">
+        {% for recipe in recipes %}
+            <li>
+              <a href="{{ recipe.get_absolute_url }}">{{ recipe }}</a>
+              <a
+                href="{% url recipe_unflagging recipe_slug=recipe.slug %}"
+                class="unflag-recipe"
+              ><i class="icon-flag"></i> unflag</a>
+            </li>
+        {% endfor %}
+      </ul>
+      <h3 id="no_flagged_recipes" style="display:none;">There are no flagged recipes</h3>
+    {% else %}
+      <h3>There are no flagged recipes</h3>
+    {% endif %}
+    
+{% endblock content %}
+
+
+{% block js %}
+  <script src="{{ STATIC_URL }}js/flagged_recipes.js"></script>
+{% endblock js %}

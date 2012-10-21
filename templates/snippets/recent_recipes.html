@@ -1,0 +1,9 @@
+{% if recipes %}
+  <ol class="recent-recipes">
+    {% for recipe in recipes %}
+      <li>
+        <a href="{{ recipe.get_absolute_url }}">{{ recipe }}</a>
+      </li>
+    {% endfor %}
+  </ol>
+{% endif %}

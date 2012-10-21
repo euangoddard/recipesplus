@@ -1,0 +1,63 @@
+{% extends "base_with_content.html" %}
+
+{% load recipe_tags %}
+
+{% block title %}Search{% endblock %}
+
+{% block page_heading %}Search{% endblock %}
+
+
+{% block breadcrumb_content %}
+  <li>
+    <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <i class="icon-search"></i> Search</a>
+  </li>
+{% endblock breadcrumb_content %}
+
+
+{% block content %}
+  <form method="get" action="." class="well form-search">
+    <input type="text" class="input-xlarge search-query" name="q" value="{{ form.q.value|default:'' }}" placeholder="Search for recipes">
+    <input type="hidden" name="models" value="recipesplus.recipe">
+    <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Search</button>
+  </form>
+
+  {% if query %}
+    <h2>Results</h2>
+
+    {% if page.object_list %}
+      {% for result in page.object_list %}
+        <ul>
+          <li>
+            <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
+            {% category_badges result.object %}
+            {% include "snippets/flag_control.html" with recipe=result.object %}
+          </li>
+        </ul>
+      {% endfor %}
+      {% if page.has_previous or page.has_next %}
+        <div>
+          {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+          |
+          {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+        </div>
+      {% endif %}
+    {% else %}
+    <div class="alert alert-info">
+      <strong>No results found.</strong>
+      No results have been found for <em>{{ query }}</em>.
+    </div>
+      
+    {% endif %}
+  {% else %}
+    {# Show some example queries to run, maybe query syntax, something else? #}
+  {% endif %}
+{% endblock %}
+
+
+{% block js %}
+  <script src="{{ STATIC_URL }}js/flag_control.js"></script>
+{% endblock js %}

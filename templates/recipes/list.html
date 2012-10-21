@@ -1,0 +1,81 @@
+{% extends "base_with_content.html" %}
+
+{% load pagination %}
+
+{% block title %}Browse Recipes &mdash; page {{ request.GET.page|default:1 }} of {{ paginator.num_pages }}{% endblock %}
+
+{% block page_heading %}Browse Recipes{% endblock %}
+
+
+{% block breadcrumb_content %}
+  <li>
+    <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <i class="icon-list-alt"></i> Recipes
+  </li>
+{% endblock breadcrumb_content %}
+
+
+{% block content %}
+  <nav class="pull-right space-below">
+    <a class="btn" href="{% url recipe_import %}">
+      <i class="icon-download-alt"></i>
+      Import recipe
+    </a>
+    <a class="btn btn-primary" href="{% url recipe_creation %}">
+      <i class="icon-plus icon-white"></i>
+      Add a new recipe
+    </a>
+  </nav>
+  {% if recipes %}
+    <form action="{% url recipes_bulk_deletion %}" method="get">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Categories</th>
+            <th><i class="icon-trash"></i></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for recipe in recipes %}
+            <tr>
+              <td>
+                <a href="{{ recipe.get_absolute_url }}">{{ recipe.title }}</a>
+                {% include "snippets/flag_control.html" %}
+              </td>
+              <td>
+                {% for category in recipe.categories.all %}
+                  <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="recipe_ids"
+                  value="{{ recipe.pk }}"
+                />
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button class="btn btn-danger pull-right" type="submit">
+        <i class="icon-trash icon-white"></i>
+        Delete selected
+      </button>
+    </form>
+  {% else %}
+    <h2>There are no recipes yet!</h2>
+  {% endif %}
+  
+  {% paginator %}
+  
+{% endblock content %}
+
+
+{% block js %}
+  <script src="{{ STATIC_URL }}js/flag_control.js"></script>
+{% endblock js %}

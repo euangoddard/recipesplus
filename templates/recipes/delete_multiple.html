@@ -1,0 +1,49 @@
+{% extends "base_with_content.html" %}
+
+{% block title %}Delete multiple recipes{% endblock %}
+
+{% block page_heading %}Delete multiple recipes{% endblock %}
+
+
+{% block breadcrumb_content %}
+    <li>
+        <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="{% url recipe_listing %}"><i class="icon-list-alt"></i> Recipes</a>
+        <span class="divider">/</span>
+    </li>
+    <li class="active">
+        <i class="icon-trash"></i>
+        Delete multiple recipes
+    </li>
+{% endblock breadcrumb_content %}
+
+
+{% block content %}
+    <p>
+        Are you sure you want to delete the following 
+        {{ recipes_count }} recipe{{ recipes_count|pluralize }}?
+        <span class="label label-warning">This action cannot be undone</span>
+    </p>
+    <hr>
+    <form action="." method="post">
+        {% csrf_token %}
+        <ul>
+            {% for recipe in recipes %}
+                <li>
+                    <input
+                        type="hidden"
+                        name="recipe_ids"
+                        value="{{ recipe.pk }}"
+                    />
+                    {{ recipe.title }}
+                </li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a class="btn" href="{% url recipe_listing %}">Cancel</a>
+    </form>
+{% endblock content %}

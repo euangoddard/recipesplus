@@ -1,0 +1,9 @@
+{% for recipe in flagged_recipes %}
+  <li><a href="{{ recipe.get_absolute_url }}">{{ recipe.title }}</a></li>
+{% empty %}
+  <li><a href="{% url flagged_recipe_list %}">[No flagged recipes]</a></li>
+{% endfor %}
+{% if flagged_recipes %}
+  <li class="divider"></li>
+  <li><a href="{% url flagged_recipe_list %}">View {{ flagged_recipe_count }} flagged recipe{{ flagged_recipe_count|pluralize }}</a></li>
+{% endif %}

@@ -1,0 +1,33 @@
+{% extends "base_with_content.html" %}
+
+{% block title %}{% if category %}Update{% else %}Add a{% endif %} category{% endblock %}
+
+{% block page_heading %}{% if category %}Update{% else %}Add a{% endif %} category{% endblock %}
+
+
+{% block breadcrumb_content %}
+    <li>
+        <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="{% url category_listing %}"><i class="icon-th-list"></i>
+        Categories</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+        <i class="icon-{% if category %}pencil{% else %}plus{% endif %}"></i>
+        {% if category %}Update{% else %}Add {% endif %} category
+    </li>
+{% endblock breadcrumb_content %}
+
+
+{% block content %}
+    <form action="." method="post" class="form-horizontal">
+        {% csrf_token %}
+        {% include "snippets/form.html" %}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn" href="{{ back_link }}">Cancel</a>
+        </div>
+    </form>
+{% endblock content %}

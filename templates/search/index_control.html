@@ -1,0 +1,34 @@
+{% extends "base_with_content.html" %}
+
+{% block title %}Search index control panel{% endblock %}
+
+{% block page_heading %}Search index control panel{% endblock %}
+
+{% block breadcrumb_content %}
+    <li>
+        <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li class="active">
+        <i class="icon-wrench"></i> Search index control panel</a>
+    </li>
+{% endblock breadcrumb_content %}
+
+{% block content %}
+    <div class="alert alert-warning">
+        <strong>Warning!</strong>
+        The actions here are all potentially destructive. Be careful!
+    </div>
+    <form action="." method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn" name="action" value="update">
+            <i class="icon-repeat"></i> Update index
+        </button>
+        <button type="submit" class="btn btn-warning" name="action" value="rebuild">
+            <i class="icon-white icon-refresh"></i> Re-build index
+        </button>
+        <button type="submit" class="btn btn-danger" name="action" value="clear">
+            <i class="icon-white icon-trash"></i> Clear index
+        </button>
+    </form>
+{% endblock %}

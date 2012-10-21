@@ -1,0 +1,6 @@
+<li{% if menu_item.url == active_url %} class="active"{% endif %}>
+    <a href="{{ menu_item.url }}">
+        <i class="{% if menu_item.url == active_url %}icon-white {% endif %}icon-{{ menu_item.icon }}"></i>
+        {{ menu_item.label }}
+    </a>
+</li>

@@ -1,0 +1,5 @@
+{% for category in categories %}
+    <span class="label label-info label-category">
+        <a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+    </span>
+{% endfor %}

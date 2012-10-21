@@ -1,0 +1,89 @@
+body {
+    padding-bottom: 30px;
+}
+
+@media (min-width: 980px) {
+    body {
+        padding-top: 60px;
+    }
+}
+.space-below {
+    margin-bottom: 17px;
+}
+
+#import-input {
+    height: 300px;
+}
+
+.navbar-search button {
+    position: absolute;
+    right: 3px;
+    top: 4px;
+    background: none;
+    border: none;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+}
+
+span.label a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#method-control-panel,
+#ingredients-control-panel {
+    display: none;
+    position: absolute;
+}
+#ingredients-control-panel {
+    padding-left: 2px;
+}
+
+textarea.instruction,
+input.ingredient {
+    margin-bottom: 2px;
+}
+input.heading {
+    font-weight: bold;
+}
+
+.ui-selectmore-dropdown {
+    position: relative;
+    left: -18px;
+    cursor: pointer;
+}
+.ui-selectmore-list {
+    margin: 0;
+    padding: 5px 0 0;
+    width: 216px;
+}
+.ui-selectmore-list li {
+    margin-bottom: 3px;
+    padding: 4px 4px 4px 10px;
+    position: relative;
+    background: #F7F7F7;
+    color: #333;
+}
+.ui-selectmore-remove {
+    position: absolute;
+    right: 5px;
+    font-weight: bold;
+    font-size: 17px;
+    top: -1px;
+}
+.label-category {
+    margin-right: 2px;
+}
+.recent-recipes {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+a.flag-recipe,
+a.unflag-recipe {
+    margin-left: 0.5em;
+    font-size: 11px;
+    color: #999;
+}

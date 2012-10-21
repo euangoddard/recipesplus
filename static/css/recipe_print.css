@@ -1,0 +1,20 @@
+/* Styles for printing out a recipe */
+
+body {
+    padding: 10px;
+}
+
+nav,
+.navbar,
+.breadcrumb,
+.span3 {
+    display: none;
+}
+
+.container {
+    width: auto;
+}
+
+.label {
+    text-shadow: none;
+}

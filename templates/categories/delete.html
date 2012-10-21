@@ -1,0 +1,36 @@
+{% extends "base_with_content.html" %}
+
+{% block title %}Delete category{% endblock %}
+
+{% block page_heading %}Delete category{% endblock %}
+
+
+{% block breadcrumb_content %}
+    <li>
+        <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="{% url category_listing %}"><i class="icon-th-list"></i>
+        Categories</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+        <i class="icon-trash"></i>
+        Delete category
+    </li>
+{% endblock breadcrumb_content %}
+
+
+{% block content %}
+    <p>
+        Are you sure you want to delete the category
+        <strong>{{ category.title }}</strong>?
+        <span class="label label-warning">This action cannot be undone</span>
+    </p>
+    <hr>
+    <form action="." method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a class="btn" href="{{ category.get_absolute_url }}">Cancel</a>
+    </form>
+{% endblock content %}

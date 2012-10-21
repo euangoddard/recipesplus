@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <ul class="breadcrumb">
+        {% block breadcrumb_content %}
+            <li class="active"><i class="icon-home"></i> Home</li>
+        {% endblock %}
+    </ul>
+    <header class="page-header">
+        <h1>{% block page_heading %}Page heading goes here{% endblock %}</h1>
+    </header>
+    
+    {% block content %}Content goes here{% endblock %}
+{% endblock main %}

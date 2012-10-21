@@ -1,0 +1,102 @@
+{% extends "base_with_content.html" %}
+
+{% load recipe_tags %}
+
+{% block title %}{{ recipe.title }}{% endblock %}
+
+{% block page_heading %}{{ recipe.title }}{% endblock %}
+
+
+{% block css %}
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/recipe_print.css" media="print" />
+{% endblock %}
+
+
+{% block breadcrumb_content %}
+    <li>
+        <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+        <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="{% url recipe_listing %}"><i class="icon-list-alt"></i> Recipes</a>
+        <span class="divider">/</span>
+    </li>
+    <li class="active">
+        <i class="icon-folder-open"></i> {{ recipe.title }}
+    </li>
+{% endblock breadcrumb_content %}
+
+
+{% block content %}
+    <nav class="pull-right">
+      <a
+        class="btn btn-success"
+        href="{% url recipe_flagging recipe_slug=recipe.slug %}"
+        id="flag_recipe"
+        {% if recipe.is_flagged %}style="display:none;"{% endif %}
+      >
+        <i class="icon-flag icon-white"></i>
+        Flag recipe
+      </a>
+      <a
+        class="btn btn-warning"
+        href="{% url recipe_unflagging recipe_slug=recipe.slug %}"
+        id="unflag_recipe"
+        {% if not recipe.is_flagged %}style="display:none;"{% endif %}
+      >
+        <i class="icon-flag icon-white"></i>
+        Unflag recipe
+      </a>
+    
+      <a class="btn" href="{% url recipe_updating recipe_slug=recipe.slug %}">
+        <i class="icon-pencil"></i>
+        Edit recipe
+      </a>
+      <a class="btn btn-danger" href="{% url recipe_deletion recipe_slug=recipe.slug %}">
+        <i class="icon-trash icon-white"></i>
+        Delete recipe
+      </a>
+    </nav>
+    <h6>Serves {{ recipe.serves }}</h6>
+    <h2>Ingredients</h2>
+    {% for ingredient_group in grouped_ingredients %}
+        {% if ingredient_group.heading %}
+            <h4>{{ ingredient_group.heading }}</h4>
+        {% endif %}
+        {% if ingredient_group.ingredients %}
+            <ul>
+                {% for ingredient in ingredient_group.ingredients %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+    <h2>Method</h2>
+    <ol>
+        {% for instruction in recipe.instructions %}
+            <li>{{ instruction }}</li>
+        {% endfor %}
+    </ol>
+    <h2>Categories</h2>
+    {% if recipe_has_categories %}
+        {% category_badges recipe %}
+    {% else %}
+        <small>This recipe does not belong to any categories</small>
+    {% endif %}
+    <hr>
+    <nav class="pull-right">
+        <a class="btn" href="{% url recipe_import %}">
+            <i class="icon-download-alt"></i>
+            Import recipe
+        </a>
+        <a class="btn btn-primary" href="{% url recipe_creation %}">
+            <i class="icon-plus icon-white"></i>
+            Add a new recipe
+        </a>
+    </nav>
+{% endblock content %}
+
+
+{% block js %}
+  <script src="{{ STATIC_URL }}js/recipe_detail.js"></script>
+{% endblock js %}
