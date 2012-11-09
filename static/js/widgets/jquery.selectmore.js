@@ -67,7 +67,7 @@
             this.search_box_wrapper = $('<div/>');
             this.search_box_wrapper.addClass(this.widgetBaseClass + '-wrap');
             
-            this.search_box = $('<input/>', {type: 'text', autocomplete: 'off'});
+            this.search_box = $('<input type="text" autocomplete="off" />');
             this.search_box.autocomplete({
                 source: $.proxy(widget._get_options, widget),
                 delay: 0,

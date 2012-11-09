@@ -1,15 +1,15 @@
 from django.db.models import permalink
 from django.db.models.base import Model
+from django.db.models.fields import BooleanField
 from django.db.models.fields import CharField
+from django.db.models.fields import DateTimeField
 from django.db.models.fields import SlugField
 from django.db.models.fields import TextField
 from django.db.models.fields.related import ManyToManyField
 from django.template.defaultfilters import slugify
-from django.db.models.fields import DateTimeField
-from django.db.models.fields import BooleanField
 
 
-__all__ = ["Category", "Recipe"]
+__all__ = ["Category", "Recipe", "DayPlan"]
 
 
 INGREDIENT_HEADING_MARKER = "|"

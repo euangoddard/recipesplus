@@ -29,10 +29,10 @@ _IMPORTED_DATA_KEY = "imported_recipe_data"
 _RECIPE_INDEX_MANAGER = IndexManager(Recipe)
 
 
-class _JsonResponse(HttpResponse):
+class _JSONResponse(HttpResponse):
     
     def __init__(self, data, **extra):
-        super(_JsonResponse, self).__init__(
+        super(_JSONResponse, self).__init__(
             simplejson.dumps(data),
             content_type="application/json",
             **extra
@@ -305,7 +305,7 @@ def get_flagged_recipes_dropdown(request):
 @require_POST
 def unflag_all_recipes(request):
     Recipe.objects.filter(is_flagged=True).update(is_flagged=False)
-    return _JsonResponse(_get_flagged_recipe_count())
+    return _JSONResponse(_get_flagged_recipe_count())
 
 
 @csrf_exempt
@@ -317,7 +317,7 @@ def flag_recipe(request, recipe_slug):
 def _alter_recipe_flagged_state(recipe_slug, flag_state):
     Recipe.objects.filter(slug=recipe_slug).update(is_flagged=flag_state)
     recipe = get_object_or_404(Recipe, slug=recipe_slug)
-    return _JsonResponse({
+    return _JSONResponse({
         "recipe_count": _get_flagged_recipe_count(),
         "new_html": render_to_string(
             "snippets/flag_control.html",

@@ -45,16 +45,16 @@
         {% if not recipe.is_flagged %}style="display:none;"{% endif %}
       >
         <i class="icon-flag icon-white"></i>
-        Unflag recipe
+        <span class="hidden-phone">Unflag recipe</span>
       </a>
     
       <a class="btn" href="{% url recipe_updating recipe_slug=recipe.slug %}">
         <i class="icon-pencil"></i>
-        Edit recipe
+        <span class="hidden-phone">Edit recipe</span>
       </a>
       <a class="btn btn-danger" href="{% url recipe_deletion recipe_slug=recipe.slug %}">
         <i class="icon-trash icon-white"></i>
-        Delete recipe
+        <span class="hidden-phone">Delete recipe</span>
       </a>
     </nav>
     <h6>Serves {{ recipe.serves }}</h6>
@@ -87,11 +87,11 @@
     <nav class="pull-right">
         <a class="btn" href="{% url recipe_import %}">
             <i class="icon-download-alt"></i>
-            Import recipe
+            <span class="hidden-phone">Import recipe</span>
         </a>
         <a class="btn btn-primary" href="{% url recipe_creation %}">
             <i class="icon-plus icon-white"></i>
-            Add a new recipe
+            <span class="hidden-phone">Add a new recipe</span>
         </a>
     </nav>
 {% endblock content %}
