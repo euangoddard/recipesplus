@@ -51,4 +51,14 @@ $(function () {
     $(document).on("click", function (event) {
         $(".dropdown").removeClass("open");
     });
+    
+    $(window).on("load", function () {
+        var $initial_scroll_element = $("#start-here");
+        if ($initial_scroll_element.length && $(window).width() < 768) {
+            setTimeout(function () {
+                $(window).scrollTop($initial_scroll_element.offset().top);
+            }, 100);
+        }
+    });
+    
 });
