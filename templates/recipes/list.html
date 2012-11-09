@@ -22,11 +22,11 @@
   <nav class="pull-right space-below">
     <a class="btn" href="{% url recipe_import %}">
       <i class="icon-download-alt"></i>
-      Import recipe
+      <span class="hidden-phone">Import recipe</span>
     </a>
     <a class="btn btn-primary" href="{% url recipe_creation %}">
       <i class="icon-plus icon-white"></i>
-      Add a new recipe
+      <span class="hidden-phone">Add a new recipe</span>
     </a>
   </nav>
   {% if recipes %}
@@ -64,7 +64,7 @@
       </table>
       <button class="btn btn-danger pull-right" type="submit">
         <i class="icon-trash icon-white"></i>
-        Delete selected
+        <span class="hidden-phone">Delete selected</span>
       </button>
     </form>
   {% else %}

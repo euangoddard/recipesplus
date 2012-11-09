@@ -24,11 +24,11 @@
   <nav class="pull-right">
     <a class="btn" href="{% url category_updating category_slug=category.slug %}">
       <i class="icon-pencil"></i>
-      Rename category
+      <span class="hidden-phone">Rename category</span>
     </a>
     <a class="btn btn-danger" href="{% url category_deletion category_slug=category.slug %}">
       <i class="icon-trash icon-white"></i>
-      Delete category
+      <span class="hidden-phone">Delete category</span>
     </a>
   </nav>
   {% if recipes %}
@@ -44,10 +44,12 @@
     <h3>There are currently no recipes in this category</h3>
     <hr>
     <a href="{% url recipe_creation %}" class="btn btn-primary">
-      Add a recipe <i class="icon-plus icon-white"></i>
+      <i class="icon-plus icon-white"></i>
+      <span class="hidden-phone">Add a recipe</span>
     </a>
     <a href="{% url recipe_import %}" class="btn">
-      Import a recipe <i class="icon-download-alt"></i>
+      <i class="icon-download-alt"></i>
+      <span class="hidden-phone">Import a recipe</span>
     </a>
   {% endif %}
 {% endblock content %}
