@@ -5,8 +5,6 @@
         '<textarea class="input-xxlarge instruction" placeholder="Add instruction">{{ instruction }}</textarea>'
     );
     
-    var RETURN_KEYS = [$.ui.keyCode.ENTER, $.ui.keyCode.NUMPAD_ENTER];
-    
     var INSTRUCTION_SELECTOR = "textarea.instruction";
     
     $.widget("ui.method_widget", {
@@ -52,7 +50,7 @@
                 self.current_editing_element = null;
                 self.control_panel.hide();
             }).on("keypress", INSTRUCTION_SELECTOR, function (evt) {
-                if (!evt.shiftKey && $.inArray(evt.keyCode, RETURN_KEYS) !== -1) {
+                if (!evt.shiftKey && evt.keyCode === $.ui.keyCode.ENTER) {
                     var $instruction = $(this);
                     evt.preventDefault();
                     var $next_instruction = $instruction.next(INSTRUCTION_SELECTOR);

@@ -5,8 +5,6 @@
         '<input type="text" class="input-xxlarge ingredient{{#if is_heading }} heading{{/if}}" placeholder="Add ingredient" value="{{ ingredient }}">'
     );
     
-    var RETURN_KEYS = [$.ui.keyCode.ENTER, $.ui.keyCode.NUMPAD_ENTER];
-    
     var INGREDIENT_SELECTOR = "input.ingredient";
     
     var HEADING_CLASS = "heading";
@@ -68,7 +66,7 @@
                 self.current_editing_element = null;
                 self.control_panel.hide();
             }).on("keypress", INGREDIENT_SELECTOR, function (evt) {
-                if (!evt.shiftKey && $.inArray(evt.keyCode, RETURN_KEYS) !== -1) {
+                if (!evt.shiftKey && evt.keyCode === $.ui.keyCode.ENTER) {
                     var $ingredient = $(this);
                     evt.preventDefault();
                     var $next_ingredient = $ingredient.next(INGREDIENT_SELECTOR);
