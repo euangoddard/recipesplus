@@ -45,6 +45,9 @@ textarea.instruction,
 input.ingredient {
     margin-bottom: 2px;
 }
+textarea.instruction {
+    height: 5em;
+}
 input.heading {
     font-weight: bold;
 }
