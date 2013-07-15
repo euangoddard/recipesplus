@@ -1,3 +1,5 @@
 {{ object.title }}
 {{ object.ingredients }}
 {{ object.method }}
+
+{{ object.categories.all|join:", " }}
