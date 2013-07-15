@@ -16,23 +16,25 @@ framework.
 import os
 import sys
 
-sys.path[:] = ['/Users/euan/python/recipesplus',
- '/Users/euan/.virtualenvs/recipesplus/lib/python2.5/site-packages/setuptools-0.6c11-py2.5.egg',
- '/Users/euan/.virtualenvs/recipesplus/lib/python2.5/site-packages/pip-1.0.2-py2.5.egg',
- '/Users/euan/.virtualenvs/recipesplus/lib/python25.zip',
- '/Users/euan/.virtualenvs/recipesplus/lib/python2.5',
- '/Users/euan/.virtualenvs/recipesplus/lib/python2.5/plat-darwin',
- '/Users/euan/.virtualenvs/recipesplus/lib/python2.5/plat-mac',
- '/Users/euan/.virtualenvs/recipesplus/lib/python2.5/plat-mac/lib-scriptpackages',
- '/Users/euan/.virtualenvs/recipesplus/Extras/lib/python',
- '/Users/euan/.virtualenvs/recipesplus/lib/python2.5/lib-tk',
- '/Users/euan/.virtualenvs/recipesplus/lib/python2.5/lib-dynload',
- '/System/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5',
- '/System/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/plat-darwin',
- '/System/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/lib-tk',
- '/System/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/plat-mac',
- '/System/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/plat-mac/lib-scriptpackages',
- '/Users/euan/.virtualenvs/recipesplus/lib/python2.5/site-packages']
+sys.path[:] = [
+ '/Users/euan/python/recipesplus',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python2.7/site-packages/pip-1.3.1-py2.7.egg',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python27.zip',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python2.7',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python2.7/plat-darwin',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python2.7/plat-mac',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python2.7/plat-mac/lib-scriptpackages',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python2.7/lib-tk',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python2.7/lib-old',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python2.7/lib-dynload',
+ '/usr/local/lib/python2.7',
+ '/usr/local/lib/python2.7/plat-darwin',
+ '/usr/local/lib/python2.7/lib-tk',
+ '/usr/local/lib/python2.7/plat-mac',
+ '/usr/local/lib/python2.7/plat-mac/lib-scriptpackages',
+ '/Users/euan/.virtualenvs/recipesplus/lib/python2.7/site-packages',
+ ]
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "recipesplus.settings")
 
