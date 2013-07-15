@@ -7,11 +7,11 @@
 
 {% block breadcrumb_content %}
     <li>
-        <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+        <a href="{% url 'frontpage' %}"><i class="icon-home"></i> Home</a>
         <span class="divider">/</span>
     </li>
     <li>
-        <a href="{% url recipe_listing %}"><i class="icon-list-alt"></i> Recipes</a>
+        <a href="{% url 'recipe_listing' %}"><i class="icon-list-alt"></i> Recipes</a>
         <span class="divider">/</span>
     </li>
     <li class="active">
@@ -44,6 +44,6 @@
         </ul>
         <hr>
         <button type="submit" class="btn btn-danger">Delete</button>
-        <a class="btn" href="{% url recipe_listing %}">Cancel</a>
+        <a class="btn" href="{% url 'recipe_listing' %}">Cancel</a>
     </form>
 {% endblock content %}

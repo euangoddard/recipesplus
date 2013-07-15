@@ -7,7 +7,7 @@
 
 {% block breadcrumb_content %}
     <li>
-        <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+        <a href="{% url 'frontpage' %}"><i class="icon-home"></i> Home</a>
         <span class="divider">/</span>
     </li>
     <li class="active">
@@ -18,7 +18,7 @@
 
 {% block content %}
     <nav class="pull-right space-below">
-        <a class="btn btn-primary" href="{% url category_creation %}">
+        <a class="btn btn-primary" href="{% url 'category_creation' %}">
             <i class="icon-plus icon-white"></i>
             <span class="hidden-phone">Add a new category</span>
         </a>

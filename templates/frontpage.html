@@ -3,59 +3,64 @@
 {% block title %}Welcome to recipesplus{% endblock %}
 
 {% block main %}
-    <div class="hero-unit hidden-phone">
-      <h1>Welcome to recipesplus</h1>
-      <p>&nbsp;</p>
-      <form class="form-search" method="get" action="{% url haystack_search %}">
-          Search for recipes &nbsp;
-          <input type="text" class="input-large search-query" name="q" placeholder="Search for recipes">
-          <input type="hidden" name="models" value="recipesplus.recipe">
-          <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Search</button>
-      </form>
-      <div class="btn-group">
-        <a class="btn btn-primary btn-large" href="{% url recipe_listing %}">
-          <i class="icon-list-alt icon-white"></i>
-          Browse recipes by name
-          <i class="icon-white icon-chevron-right"></i>
-        </a>
-        <a class="btn btn-primary btn-large" href="{% url category_listing %}">
-          <i class="icon-white icon-th-list"></i>
-          Browse recipes by category
-          <i class="icon-white icon-chevron-right"></i>
-        </a>
-      </div>
-      <h6>Need inspiration?</h6>
-      <div class="btn-group">
-        <a class="btn" href="http://www.bbcgoodfood.com" target="_blank">
-          <i class="icon-bookmark"></i>
-          Go to BBC Good Food
-        </a>
-        <a class="btn" href="http://www.taste.com.au" target="_blank">
-          <i class="icon-bookmark"></i>
-          Go to Taste.com.au
-        </a>
+  <div class="hero-unit hidden-phone">
+    <h1>Welcome to recipesplus</h1>
+    <p>&nbsp;</p>
+    <form class="form-search" method="get" action="{% url 'haystack_search' %}">
+      Search for recipes &nbsp;
+      <input
+      type="text"
+      class="input-large search-query"
+      name="q"
+      placeholder="Search for recipes"
+      >
+      <input type="hidden" name="models" value="recipesplus.recipe">
+      <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Search</button>
+    </form>
+    <div class="btn-group">
+    <a class="btn btn-primary btn-large" href="{% url 'recipe_listing' %}">
+      <i class="icon-list-alt icon-white"></i>
+      Browse recipes by name
+      <i class="icon-white icon-chevron-right"></i>
+    </a>
+    <a class="btn btn-primary btn-large" href="{% url 'category_listing' %}">
+      <i class="icon-white icon-th-list"></i>
+      Browse recipes by category
+      <i class="icon-white icon-chevron-right"></i>
+    </a>
+    </div>
+    <h6>Need inspiration?</h6>
+    <div class="btn-group">
+    <a class="btn" href="http://www.bbcgoodfood.com" target="_blank">
+      <i class="icon-bookmark"></i>
+      Go to BBC Good Food
+    </a>
+    <a class="btn" href="http://www.taste.com.au" target="_blank">
+      <i class="icon-bookmark"></i>
+      Go to Taste.com.au
+    </a>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="span3">
+      <div class="well well-small">
+        <h6><i class="icon-eye-open"></i> Recently viewed</h6>
+        
+        {% include "snippets/recent_recipes.html" with recipes=recently_viewed_recipes %}
       </div>
     </div>
-    
-    <div class="row">
-        <div class="span3">
-            <div class="well well-small">
-                <h6><i class="icon-eye-open"></i> Recently viewed</h6>
-                
-                {% include "snippets/recent_recipes.html" with recipes=recently_viewed_recipes %}
-            </div>
-        </div>
-        <div class="span3">
-            <div class="well well-small">
-                <h6><i class="icon-plus"></i> Recently added</h6>
-                {% include "snippets/recent_recipes.html" with recipes=recently_created_recipes %}
-            </div>
-        </div>
-        <div class="span3">
-            <div class="well well-small">
-                <h6><i class="icon-pencil"></i> Recently updated</h6>
-                {% include "snippets/recent_recipes.html" with recipes=recently_updated_recipes %}
-            </div>
-        </div>
+    <div class="span3">
+      <div class="well well-small">
+        <h6><i class="icon-plus"></i> Recently added</h6>
+        {% include "snippets/recent_recipes.html" with recipes=recently_created_recipes %}
+      </div>
     </div>
+    <div class="span3">
+      <div class="well well-small">
+        <h6><i class="icon-pencil"></i> Recently updated</h6>
+        {% include "snippets/recent_recipes.html" with recipes=recently_updated_recipes %}
+      </div>
+    </div>
+  </div>
 {% endblock main %}

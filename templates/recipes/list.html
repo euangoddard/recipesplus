@@ -9,7 +9,7 @@
 
 {% block breadcrumb_content %}
   <li>
-    <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+    <a href="{% url 'frontpage' %}"><i class="icon-home"></i> Home</a>
     <span class="divider">/</span>
   </li>
   <li class="active">
@@ -20,17 +20,17 @@
 
 {% block content %}
   <nav class="pull-right space-below">
-    <a class="btn" href="{% url recipe_import %}">
+    <a class="btn" href="{% url 'recipe_import' %}">
       <i class="icon-download-alt"></i>
       <span class="hidden-phone">Import recipe</span>
     </a>
-    <a class="btn btn-primary" href="{% url recipe_creation %}">
+    <a class="btn btn-primary" href="{% url 'recipe_creation' %}">
       <i class="icon-plus icon-white"></i>
       <span class="hidden-phone">Add a new recipe</span>
     </a>
   </nav>
   {% if recipes %}
-    <form action="{% url recipes_bulk_deletion %}" method="get">
+    <form action="{% url 'recipes_bulk_deletion' %}" method="get">
       <table class="table table-bordered table-striped">
         <thead>
           <tr>

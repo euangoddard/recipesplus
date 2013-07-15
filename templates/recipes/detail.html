@@ -17,11 +17,11 @@
 
 {% block breadcrumb_content %}
     <li>
-        <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+        <a href="{% url 'frontpage' %}"><i class="icon-home"></i> Home</a>
         <span class="divider">/</span>
     </li>
     <li>
-        <a href="{% url recipe_listing %}"><i class="icon-list-alt"></i> Recipes</a>
+        <a href="{% url 'recipe_listing' %}"><i class="icon-list-alt"></i> Recipes</a>
         <span class="divider">/</span>
     </li>
     <li class="active">
@@ -34,7 +34,7 @@
     <nav class="pull-right">
       <a
         class="btn btn-success"
-        href="{% url recipe_flagging recipe_slug=recipe.slug %}"
+        href="{% url 'recipe_flagging' recipe_slug=recipe.slug %}"
         id="flag_recipe"
         {% if recipe.is_flagged %}style="display:none;"{% endif %}
       >
@@ -43,7 +43,7 @@
       </a>
       <a
         class="btn btn-warning"
-        href="{% url recipe_unflagging recipe_slug=recipe.slug %}"
+        href="{% url 'recipe_unflagging' recipe_slug=recipe.slug %}"
         id="unflag_recipe"
         {% if not recipe.is_flagged %}style="display:none;"{% endif %}
       >
@@ -51,11 +51,11 @@
         <span class="hidden-phone">Unflag recipe</span>
       </a>
     
-      <a class="btn" href="{% url recipe_updating recipe_slug=recipe.slug %}">
+      <a class="btn" href="{% url 'recipe_updating' recipe_slug=recipe.slug %}">
         <i class="icon-pencil"></i>
         <span class="hidden-phone">Edit recipe</span>
       </a>
-      <a class="btn btn-danger" href="{% url recipe_deletion recipe_slug=recipe.slug %}">
+      <a class="btn btn-danger" href="{% url 'recipe_deletion' recipe_slug=recipe.slug %}">
         <i class="icon-trash icon-white"></i>
         <span class="hidden-phone">Delete recipe</span>
       </a>
@@ -88,11 +88,11 @@
     {% endif %}
     <hr>
     <nav class="pull-right">
-        <a class="btn" href="{% url recipe_import %}">
+        <a class="btn" href="{% url 'recipe_import' %}">
             <i class="icon-download-alt"></i>
             <span class="hidden-phone">Import recipe</span>
         </a>
-        <a class="btn btn-primary" href="{% url recipe_creation %}">
+        <a class="btn btn-primary" href="{% url 'recipe_creation' %}">
             <i class="icon-plus icon-white"></i>
             <span class="hidden-phone">Add a new recipe</span>
         </a>

@@ -7,11 +7,11 @@
 
 {% block breadcrumb_content %}
   <li>
-    <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+    <a href="{% url 'frontpage' %}"><i class="icon-home"></i> Home</a>
     <span class="divider">/</span>
   </li>
   <li>
-    <a href="{% url category_listing %}"><i class="icon-th-list"></i>
+    <a href="{% url 'category_listing' %}"><i class="icon-th-list"></i>
     Categories</a> <span class="divider">/</span>
   </li>
   <li class="active">
@@ -22,11 +22,11 @@
 
 {% block content %}
   <nav class="pull-right">
-    <a class="btn" href="{% url category_updating category_slug=category.slug %}">
+    <a class="btn" href="{% url 'category_updating' category_slug=category.slug %}">
       <i class="icon-pencil"></i>
       <span class="hidden-phone">Rename category</span>
     </a>
-    <a class="btn btn-danger" href="{% url category_deletion category_slug=category.slug %}">
+    <a class="btn btn-danger" href="{% url 'category_deletion' category_slug=category.slug %}">
       <i class="icon-trash icon-white"></i>
       <span class="hidden-phone">Delete category</span>
     </a>
@@ -43,11 +43,11 @@
   {% else %}
     <h3>There are currently no recipes in this category</h3>
     <hr>
-    <a href="{% url recipe_creation %}" class="btn btn-primary">
+    <a href="{% url 'recipe_creation' %}" class="btn btn-primary">
       <i class="icon-plus icon-white"></i>
       <span class="hidden-phone">Add a recipe</span>
     </a>
-    <a href="{% url recipe_import %}" class="btn">
+    <a href="{% url 'recipe_import' %}" class="btn">
       <i class="icon-download-alt"></i>
       <span class="hidden-phone">Import a recipe</span>
     </a>

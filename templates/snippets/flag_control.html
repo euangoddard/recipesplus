@@ -1,11 +1,11 @@
 {% if recipe.is_flagged %}
   <a
-    href="{% url recipe_unflagging recipe_slug=recipe.slug %}"
+    href="{% url 'recipe_unflagging' recipe_slug=recipe.slug %}"
     class="unflag-recipe"
   ><i class="icon-flag"></i> unflag</a>
 {% else %}
   <a
-    href="{% url recipe_flagging recipe_slug=recipe.slug %}"
+    href="{% url 'recipe_flagging' recipe_slug=recipe.slug %}"
     class="flag-recipe"
   ><i class="icon-flag"></i> flag</a>
 {% endif %}

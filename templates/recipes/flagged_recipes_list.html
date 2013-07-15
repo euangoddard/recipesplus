@@ -9,7 +9,7 @@
 
 {% block breadcrumb_content %}
     <li>
-        <a href="{% url frontpage %}"><i class="icon-home"></i> Home</a>
+        <a href="{% url 'frontpage' %}"><i class="icon-home"></i> Home</a>
         <span class="divider">/</span>
     </li>
     <li class="active">
@@ -22,7 +22,7 @@
     <nav class="pull-right space-below">
         <a
           class="btn btn-warning"
-          href="{% url flagged_recipe_clearing %}"
+          href="{% url 'flagged_recipe_clearing' %}"
           id="unflag_all_recipes"
         >
             <i class="icon-flag icon-white"></i>
@@ -35,7 +35,7 @@
             <li>
               <a href="{{ recipe.get_absolute_url }}">{{ recipe }}</a>
               <a
-                href="{% url recipe_unflagging recipe_slug=recipe.slug %}"
+                href="{% url 'recipe_unflagging' recipe_slug=recipe.slug %}"
                 class="unflag-recipe"
               ><i class="icon-flag"></i> unflag</a>
             </li>
