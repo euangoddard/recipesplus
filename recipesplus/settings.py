@@ -176,8 +176,17 @@ LOGGING = {
     }
 }
 
-HAYSTACK_SITECONF = 'recipesplus.search_sites'
-
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-
-HAYSTACK_WHOOSH_PATH = same_path('../search_index')
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': same_path('../search_index'),
+        'STORAGE': 'file',
+        'POST_LIMIT': 128 * 1024 * 1024,
+        'INCLUDE_SPELLING': False,
+        'BATCH_SIZE': 100,
+    },
+}
+# Ensure that whoosh works!
+import whoosh
+import mmap
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
