@@ -9,7 +9,7 @@ from django.db.models.fields.related import ManyToManyField
 from django.template.defaultfilters import slugify
 
 
-__all__ = ["Category", "Recipe", "DayPlan"]
+__all__ = ["Category", "Recipe", "INGREDIENT_HEADING_MARKER"]
 
 
 INGREDIENT_HEADING_MARKER = "|"
