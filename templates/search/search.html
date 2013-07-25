@@ -22,7 +22,14 @@
 
 {% block content %}
   <form method="get" action="." class="well form-search">
-    <input type="text" class="search-query" name="q" value="{{ form.q.value|default:'' }}" placeholder="Search for recipes">
+    <input
+      type="text"
+      class="search-query"
+      name="q"
+      value="{{ form.q.value|default:'' }}"
+      placeholder="Search for recipes"
+      autocomplete="off"
+    >
     <input type="hidden" name="models" value="recipesplus.recipe">
     <button type="submit" class="btn btn-primary">
       <i class="icon-search icon-white"></i>
